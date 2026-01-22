@@ -8,58 +8,64 @@ use Spatie\Permission\Models\Permission;
 
 class RoleSeeder extends Seeder
 {
+    /**
+     * Exécuter le seeder / تشغيل البذور
+     * Run the database seeds
+     */
     public function run(): void
     {
+        // Réinitialiser les rôles et permissions en cache
+        // إعادة تعيين الأدوار والصلاحيات المخزنة مؤقتاً
         // Reset cached roles and permissions
         app()[\Spatie\Permission\PermissionRegistrar::class]->forgetCachedPermissions();
 
-        // Create permissions
+        // Créer les permissions / إنشاء الصلاحيات / Create permissions
         $permissions = [
-            // Courses
+            // Cours / الدورات / Courses
             'view courses',
             'create courses',
             'edit courses',
             'delete courses',
             'publish courses',
             
-            // Lessons
+            // Leçons / الدروس / Lessons
             'view lessons',
             'create lessons',
             'edit lessons',
             'delete lessons',
             
-            // Enrollments
+            // Inscriptions / التسجيلات / Enrollments
             'view enrollments',
             'create enrollments',
             'edit enrollments',
             'delete enrollments',
             
-            // Certificates
+            // Certificats / الشهادات / Certificates
             'view certificates',
             'create certificates',
             'delete certificates',
             
-            // Reviews
+            // Évaluations / التقييمات / Reviews
             'view reviews',
             'create reviews',
             'edit reviews',
             'delete reviews',
             'approve reviews',
             
-            // Quizzes
+            // Quiz / الاختبارات / Quizzes
             'view quizzes',
             'create quizzes',
             'edit quizzes',
             'delete quizzes',
             'take quizzes',
             
-            // Users
+            // Utilisateurs / المستخدمون / Users
             'view users',
             'create users',
             'edit users',
             'delete users',
             
-            // Admin
+            // Administration / الإدارة / Admin
             'access admin panel',
         ];
 
@@ -67,7 +73,7 @@ class RoleSeeder extends Seeder
             Permission::create(['name' => $permission, 'guard_name' => 'web']);
         }
 
-        // Create roles
+        // Créer les rôles / إنشاء الأدوار / Create roles
         $superAdmin = Role::create(['name' => 'Super Admin', 'guard_name' => 'web']);
         $superAdmin->givePermissionTo(Permission::all());
 

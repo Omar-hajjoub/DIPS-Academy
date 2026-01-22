@@ -1,6 +1,70 @@
-# Changelog
+# Changelog / سجل التغييرات
 
-جميع التغييرات المهمة في المشروع سيتم توثيقها في هذا الملف.
+جميع التغييرات المهمة في المشروع سيتم توثيقها في هذا الملف.  
+Toutes les modifications importantes du projet seront documentées dans ce fichier.
+
+## [1.0.1] - 2026-01-22
+
+### 🌍 Ajouté / Added / إضافات
+
+#### Support multilingue / دعم متعدد اللغات
+- ✨ Ajout du support français et arabe dans toute la documentation / إضافة دعم الفرنسية والعربية في جميع التوثيق
+- ✨ `install.php` maintenant bilingue (FR/AR) avec détection Windows / install.php ثنائي اللغة مع اكتشاف Windows
+- ✨ `README_FR_AR.md` - README complet en français et arabe / README كامل بالفرنسية والعربية
+- ✨ `INSTALLATION_FR_AR.md` - Guide d'installation bilingue détaillé / دليل التثبيت ثنائي اللغة مفصل
+- ✨ `QUICK_INSTALL.md` - Installation rapide en 3 étapes / التثبيت السريع في 3 خطوات
+
+#### Améliorations du script d'installation / تحسينات سكريبت التثبيت
+- ✅ Détection automatique du système d'exploitation (Windows/Unix) / اكتشاف تلقائي لنظام التشغيل
+- ✅ Vérification des extensions PHP requises / التحقق من امتدادات PHP المطلوبة
+- ✅ Configuration automatique de l'encodage UTF-8 pour Windows / إعداد تلقائي لترميز UTF-8 في Windows
+- ✅ Messages d'erreur détaillés et multilingues / رسائل خطأ مفصلة ومتعددة اللغات
+- ✅ Support de Node.js optionnel / دعم Node.js اختياري
+- ✅ Optimisation automatique du cache / تحسين تلقائي للذاكرة المؤقتة
+
+#### Documentation bilingue / توثيق ثنائي اللغة
+- 📚 Commentaires de code en français et arabe / تعليقات الكود بالفرنسية والعربية
+- 📚 Seeders avec commentaires bilingues / Seeders مع تعليقات ثنائية اللغة
+- 📚 Migrations documentées / Migrations موثقة
+
+### 🔧 Fixed / Corrections / إصلاحات
+
+#### CI/CD
+- 🐛 Résolution des échecs de tests GitHub Actions / حل فشل اختبارات GitHub Actions
+- 🐛 Configuration de `phpunit.xml` pour utiliser MySQL au lieu de SQLite / تكوين phpunit.xml لاستخدام MySQL بدلاً من SQLite
+- 🐛 Ajout de vérifications de colonnes dans les migrations / إضافة فحوصات الأعمدة في الترحيلات
+- 🐛 Correction du nom des index dans `down()` migration / تصحيح أسماء الفهارس في down() migration
+
+#### Installation
+- 🔧 Correction des problèmes d'installation sur les nouvelles machines / إصلاح مشاكل التثبيت على الأجهزة الجديدة
+- 🔧 Amélioration de la gestion des erreurs / تحسين معالجة الأخطاء
+- 🔧 Support amélioré pour Laragon/XAMPP/WAMP / دعم محسّن لـ Laragon/XAMPP/WAMP
+
+### 📝 Changed / Modifications / تغييرات
+
+#### Migrations
+- 🔄 Amélioration de `2026_01_22_105926_add_tenant_user_id_to_tables.php` / تحسين
+  - Vérification d'existence des colonnes avant ajout / التحقق من وجود الأعمدة قبل الإضافة
+  - Gestion correcte des index lors du rollback / إدارة صحيحة للفهارس عند الإلغاء
+  - Commentaires bilingues / تعليقات ثنائية اللغة
+
+#### Configuration
+- ⚙️ `phpunit.xml` configuré pour MySQL (cohérence avec CI) / مضبوط على MySQL (اتساق مع CI)
+- ⚙️ Amélioration de la configuration de base de données pour les tests / تحسين إعداد قاعدة البيانات للاختبارات
+
+### 🎨 Amélioré / Improved / تحسينات
+
+#### Expérience utilisateur / تجربة المستخدم
+- 💅 Interface d'installation plus claire et informative / واجهة تثبيت أوضح وأكثر إفادة
+- 💅 Messages d'erreur plus descriptifs / رسائل خطأ أكثر وصفاً
+- 💅 Barre de progression visuelle pendant l'installation / شريط تقدم مرئي أثناء التثبيت
+- 💅 Emoji pour une meilleure lisibilité / رموز تعبيرية لقراءة أفضل
+
+#### Performance / الأداء
+- ⚡ Optimisation automatique après installation / تحسين تلقائي بعد التثبيت
+- ⚡ Mise en cache des configurations / تخزين الإعدادات مؤقتاً
+
+---
 
 ## [1.0.0] - 2026-01-22
 

@@ -7,10 +7,12 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration
 {
     /**
-     * Run the migrations.
+     * Exécuter les migrations / تشغيل الترحيلات
+     * Run the migrations
      */
     public function up(): void
     {
+        // Ajouter le champ tenant_user_id à toutes les tables principales
         // إضافة حقل tenant_user_id لجميع الجداول الرئيسية
         $tables = [
             'courses',
@@ -35,7 +37,8 @@ return new class extends Migration
     }
 
     /**
-     * Reverse the migrations.
+     * Inverser les migrations / عكس الترحيلات
+     * Reverse the migrations
      */
     public function down(): void
     {
