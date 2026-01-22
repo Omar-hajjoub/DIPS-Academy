@@ -25,7 +25,7 @@ return new class extends Migration
         ];
 
         foreach ($tables as $tableName) {
-            if (Schema::hasTable($tableName)) {
+            if (Schema::hasTable($tableName) && !Schema::hasColumn($tableName, 'tenant_user_id')) {
                 Schema::table($tableName, function (Blueprint $table) {
                     $table->string('tenant_user_id')->nullable()->after('id');
                     $table->index('tenant_user_id');
@@ -52,9 +52,9 @@ return new class extends Migration
         ];
 
         foreach ($tables as $tableName) {
-            if (Schema::hasTable($tableName)) {
-                Schema::table($tableName, function (Blueprint $table) {
-                    $table->dropIndex(['tenant_user_id']);
+            if (Schema::hasTable($tableName) && Schema::hasColumn($tableName, 'tenant_user_id')) {
+                Schema::table($tableName, function (Blueprint $table) use ($tableName) {
+                    $table->dropIndex([$tableName . '_tenant_user_id_index']);
                     $table->dropColumn('tenant_user_id');
                 });
             }
