@@ -8,9 +8,13 @@ use Illuminate\Support\Facades\Hash;
 
 class UserSeeder extends Seeder
 {
+    /**
+     * Exécuter le seeder / تشغيل البذور
+     * Run the database seeds
+     */
     public function run(): void
     {
-        // Super Admin
+        // Super Administrateur / سوبر أدمن / Super Admin
         $superAdmin = User::create([
             'name' => 'Super Admin',
             'email' => 'superadmin@dips-academy.com',
@@ -19,7 +23,7 @@ class UserSeeder extends Seeder
         ]);
         $superAdmin->assignRole('Super Admin');
 
-        // Admin
+        // Administrateur / مدير / Admin
         $admin = User::create([
             'name' => 'Admin',
             'email' => 'admin@dips-academy.com',
@@ -28,7 +32,7 @@ class UserSeeder extends Seeder
         ]);
         $admin->assignRole('Admin');
 
-        // Instructors
+        // Instructeurs / المدرسون / Instructors
         $instructor1 = User::create([
             'name' => 'أحمد محمد',
             'email' => 'instructor1@dips-academy.com',
@@ -45,7 +49,7 @@ class UserSeeder extends Seeder
         ]);
         $instructor2->assignRole('Instructor');
 
-        // Students
+        // Étudiants / الطلاب / Students
         for ($i = 1; $i <= 10; $i++) {
             $student = User::create([
                 'name' => "طالب {$i}",

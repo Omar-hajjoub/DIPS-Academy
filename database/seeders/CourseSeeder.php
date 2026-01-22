@@ -9,15 +9,22 @@ use Illuminate\Database\Seeder;
 
 class CourseSeeder extends Seeder
 {
+    /**
+     * Exécuter le seeder / تشغيل البذور
+     * Run the database seeds
+     */
     public function run(): void
     {
         $instructors = User::role('Instructor')->get();
 
         if ($instructors->isEmpty()) {
+            $this->command->warn('Aucun instructeur trouvé. Veuillez exécuter UserSeeder en premier.');
+            $this->command->warn('لم يتم العثور على مدرسين. يرجى تشغيل UserSeeder أولاً.');
             $this->command->warn('No instructors found. Please run UserSeeder first.');
             return;
         }
 
+        // Cours d'exemple / دورات تجريبية / Sample courses
         $courses = [
             [
                 'title' => 'تعلم Laravel من الصفر إلى الاحتراف',
@@ -58,7 +65,7 @@ class CourseSeeder extends Seeder
                 'status' => 'published',
             ]));
 
-            // Create lessons for each course
+            // Créer les leçons pour chaque cours / إنشاء دروس لكل دورة / Create lessons for each course
             $lessons = [
                 ['title' => 'مقدمة الدورة', 'duration_minutes' => 15, 'is_preview' => true, 'order' => 1],
                 ['title' => 'الإعداد والتهيئة', 'duration_minutes' => 30, 'is_preview' => false, 'order' => 2],
