@@ -60,7 +60,7 @@ if ($return !== 0) {
 
 // Vérification des extensions PHP requises
 echo "\n📦 Vérification des extensions PHP / Checking PHP extensions:\n";
-$requiredExtensions = ['pdo', 'mbstring', 'fileinfo', 'openssl', 'tokenizer', 'xml', 'curl', 'zip'];
+$requiredExtensions = ['pdo', 'mbstring', 'fileinfo', 'openssl', 'tokenizer', 'xml', 'curl', 'zip', 'intl', 'gd', 'bcmath'];
 $missingExtensions = [];
 
 foreach ($requiredExtensions as $ext) {
@@ -74,8 +74,51 @@ foreach ($requiredExtensions as $ext) {
 
 if (!empty($missingExtensions)) {
     echo "\n❌ Extensions manquantes / Missing extensions: " . implode(', ', $missingExtensions) . "\n";
-    echo "   Veuillez les activer dans php.ini\n";
-    echo "   Please enable them in php.ini\n";
+    echo "\n";
+    echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n";
+    echo "📝 COMMENT LES ACTIVER / HOW TO ENABLE THEM:\n";
+    echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n";
+    
+    // Trouver le fichier php.ini
+    $phpIni = php_ini_loaded_file();
+    echo "📁 Fichier PHP.ini / PHP.ini file:\n";
+    echo "   {$phpIni}\n\n";
+    
+    echo "🔧 POUR LARAGON:\n";
+    echo "   1. Menu Laragon → PHP → php.ini\n";
+    echo "   2. Rechercher et décommenter (retirer le ;) :\n";
+    foreach ($missingExtensions as $ext) {
+        echo "      ;extension={$ext} → extension={$ext}\n";
+    }
+    echo "   3. Menu Laragon → Redémarrer tous\n\n";
+    
+    echo "🔧 POUR XAMPP:\n";
+    echo "   1. Ouvrir xampp/php/php.ini\n";
+    echo "   2. Rechercher et décommenter (retirer le ;) :\n";
+    foreach ($missingExtensions as $ext) {
+        echo "      ;extension={$ext} → extension={$ext}\n";
+    }
+    echo "   3. Redémarrer Apache depuis XAMPP Control Panel\n\n";
+    
+    echo "🔧 POUR HERD (MacOS/Windows):\n";
+    echo "   1. Ouvrir le fichier:\n";
+    echo "      {$phpIni}\n";
+    echo "   2. Ajouter à la fin du fichier:\n";
+    foreach ($missingExtensions as $ext) {
+        echo "      extension={$ext}\n";
+    }
+    echo "   3. Redémarrer Herd\n\n";
+    
+    echo "🔧 POUR WAMP:\n";
+    echo "   1. Clic gauche sur l'icône WAMP → PHP → php.ini\n";
+    echo "   2. Rechercher et décommenter :\n";
+    foreach ($missingExtensions as $ext) {
+        echo "      ;extension={$ext} → extension={$ext}\n";
+    }
+    echo "   3. Redémarrer tous les services WAMP\n\n";
+    
+    echo "⚠️  IMPORTANT: Après avoir activé les extensions, relancez ce script!\n";
+    echo "   IMPORTANT: After enabling extensions, run this script again!\n\n";
     exit(1);
 }
 
